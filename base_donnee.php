@@ -11,5 +11,6 @@ try {
     //Configuration pour gérer la connexion en cas d'erreur SQL
 } catch (PDOException $e) {
     die("Erreur de connexion:".$e->getMessage());
+    echo "donné";
 }
 ?>

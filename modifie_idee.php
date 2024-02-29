@@ -1,3 +1,5 @@
+<?php include('base_donnee.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +9,29 @@
 </head>
 <body>
 
-<h3>insert des données dans la base de données</h3>
+<h3>Modifier données dans la base de données</h3>
 <a href="index.php" class="btn_retour end">Retour</a>
 <div class="container">
+
+
                <form action="base_donnee.php" method="POST">
                     <div class="ajout">
                     <label for="tire">titre</label>
-                    <input type='text' name='titre' class="form-control">
+                    <input type='text' name='titre'value=">" class="form-control">
                     </div>
                     <div class="ajout">
                     <label for="description">description</label>
                 <textarea type="text" name="descript" id="10" cols="30" rows="10"></textarea>
                     </div>
                     <div class="ajout">
-                    <label for="categorie">categorie</label>
-                    <input type='text' name="categorie" class="form-control">
+                    
                     </div>
                     <div class="ajout">
                     <label for="date_envoi">date d'envoi</label>
                     <input type="DateTime-local" name="date_envoi" >
                     </div>
                     <div class="ajout">
-                        <button type="submit" name="save_ajout">S'inscrire</button>
+                        <button type="submit" name="save_modifie">S'inscrire</button>
                         </div>
                </form>
     </div>

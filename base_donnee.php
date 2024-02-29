@@ -78,6 +78,51 @@ if ($query_execute) {
 }
 }
 
+//Récuperer les données ajouter de l'idée 
 
+
+if (isset($_POST['save_ajout'])) {
+    //
+    
+    function validate($verifie){
+        $verifie = trim($verifie);
+        $verifie = stripcslashes($verifie);
+        $verifie = htmlspecialchars($verifie);
+        return $verifie;}
+    
+    //Récuperer le donner d'inscription
+  
+   $titre  = validate($_POST['titre']);
+   $descript = validate($_POST['descript']);
+   $categorie = validate($_POST['categorie']);
+   $date_envoi = validate($_POST['date_envoi']);
+   
+//    var_dump($titre,$descript,$categorie,$date_envoi);
+//    die('ajout idee');
+
+   $query = "INSERT INTO Idee (titre,descript,categorie,id_user,date_envoi) VALUES ( :titre, :descript, :categorie, :id_user, :date_envoi)";
+  $query_run = $connexion->prepare($query);
+
+//   var_dump($connexion->prepare($query));
+// die();
+
+  $data = [
+
+  ':titre'=> $titre, 
+  ':descript' => $descript, 
+  ':categorie' => $categorie,
+  ':date_envoi' => $date_envoi,
+  ':id_user' => 1
+  
+  ];
+
+$query_execute = $query_run->execute($data);
+
+var_dump($query_run->execute($data));
+die();
+
+var_dump($_POST['save_ajout']);
+
+    }
 
 ?>

@@ -1,12 +1,35 @@
 
-
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <style>
+    <title>Inscription</title>  
+</head>
+
+<body>
+    <div class="container">
+        <h2>Inscription</h2>
+        <form action="base_donnee.php" method="POST">
+      
+        <?php if (isset($_GET['error'])) {?>
+                <p class="error"> <?php echo $_GET['error'];?></p>
+            <?php
+            }
+            ?>
+            <input  class="saisi" type="text" name="nom_complet" placeholder="Nom complet" required><br>
+            <input class="saisi" type="text" name="email" placeholder="Adresse email" required><br>
+            <input class="saisi" type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
+            <input class="saisi" type="text" name="profession" placeholder="Votre profession"><br>
+            <input class="saisi" type="text" name="fonction" placeholder="Votre fonction"><br>
+            <input class="saisi" type="text" name="telephone" placeholder="Numéro de téléphone"><br>
+            <button type="submit" name="save_inscription">S'inscrire</button>
+        </form>
+    </div>
+</body>
+
+<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -27,9 +50,7 @@
             text-align: center;
         }
         
-        .container input[type="text"],
-        .container input[type="email"],
-        .container input[type="password"] {
+      .saisi{
             width: 95%;
             padding: 10px;
             margin-bottom: 10px;
@@ -50,20 +71,6 @@
         .container button:hover {
             background-color: #0056b3;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Inscription</h2>
-        <form action="index.php" method="post">
-            <input type="text" name="nom_complet" placeholder="Nom complet" required><br>
-            <input type="email" name="email" placeholder="Adresse email" required><br>
-            <input type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
-            <input type="text" name="profession" placeholder="Votre profession"><br>
-            <input type="text" name="fonction" placeholder="Votre fonction"><br>
-            <input type="text" name="telephone" placeholder="Numéro de téléphone"><br>
-            <button type="submit">S'inscrire</button>
-        </form>
-    </div>
-</body>
+  </style>
+
 </html>

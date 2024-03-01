@@ -13,15 +13,33 @@
 <a href="index.php" class="btn_retour end">Retour</a>
 <div class="container">
 
+<?php 
+if (isset($_GET['id'])) 
+{
+    $id_user = $_GET['id'];
 
+ $query = "SELECT * FROM Idee WHERE id=:id_user LIMIT 1";
+ $query_run = $connexion->prepare($query);
+ $data = [':id_user' => $id_user ];
+
+  $query_run->execute($data);
+
+$result = $query_run->fetchAll(PDO::FETCH_ASSOC);//executer la raquette par association
+
+
+
+}
+?>
                <form action="base_donnee.php" method="POST">
+               <input type='hidden' name='id' value="<?= $result[0]["id"];?>"  class="form-control">
+
                     <div class="ajout">
                     <label for="tire">titre</label>
-                    <input type='text' name='titre'value=">" class="form-control">
+                    <input type='text' name='titre' value="<?= $result[0]["titre"];?>"  class="form-control">
                     </div>
                     <div class="ajout">
                     <label for="description">description</label>
-                <textarea type="text" name="descript" id="10" cols="30" rows="10"></textarea>
+                <textarea type="text" name="descript"  value=""   id="10" cols="50" rows="20"><?= $result [0]["descript"];?></textarea>
                     </div>
                     <div class="ajout">
                     

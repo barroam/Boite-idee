@@ -130,74 +130,44 @@ if ($query_execute) {
 //la modification des données de l'idée
 
   if (isset($_POST['save_modifie'])) {
-    function validate($verifie){
-        $verifie = trim($verifie);
-        $verifie = stripcslashes($verifie);
-        $verifie = htmlspecialchars($verifie);
-        return $verifie;}
-  
+ 
+  $id = validate($_POST['id']);
    $titre  = validate($_POST['titre']);
    $descript = validate($_POST['descript']);
    $date_envoi = validate($_POST['date_envoi']);
+    try {
+        
+        $query = "UPDATE Idee SET titre=:titre,descript=:descript,date_envoi=:date_envoi WHERE id=:id_user LIMIT 1";
+        $query_run =$connexion->prepare($query);
 
-   //Pour mettre a jour les données de l'utlisateur
-   $query = "UPDATE Idee SET titre = :titre, descript = :descript, date_envoi = :date_envoi WHERE id = :id";
-   $query_run = $connexion->prepare($query);
-//var_dump($query_run = $connexion->prepare($query));
-//die();
+        $data= [
+            ':titre' => $titre ,
+            ':descript' => $descript,
+            ':date_envoi' => $date_envoi,
+            ':id' => $id   
+        ];
+       
+        $query_execute = $query_run->execute($data);
+        var_dump($query_execute);
+        die();
+        if ($query_execute) {
+            $_SESSION['message'] = "Modification reussi";
+            header('Location:index.php');
+            exit(0);
+        } else {
+            $_SESSION['message'] = "Modification incorrect";
+            header('Location:index.php');
+            exit(0);
+        }
+
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
 
 
-  $data = [
-    ':titre'=> $titre, 
-    ':descript' => $descript, 
-    ':date_envoi' => $date_envoi,
-  ];
 
-  $query_execute = $query_run->execute($data);
-  if ($query_execute) {
-    $_SESSION['message'] = "Inscription reussi";
-    header('Location:index.php');
-    exit(0);
-} else {
-    $_SESSION['message'] = "Inscription incorrect";
-    header('Location:index.php');
-    exit(0);
-}
+
   }
-
-
-
-
-
-
-
-
-
-
-    /*
-
-if(isset($_POST['modifier'])) {
-    $id = $_POST['id'];
-    $titre = $_POST['titre'];
-    $description = $_POST['description'];
-    $categorie = $_POST['categorie'];
-    $date_envoi = $_POST['date_envoi'];
-
-    // Exécuter la requête pour mettre à jour les données dans la base de données
-    $query = "UPDATE VotreTable SET titre = :titre, description = :description, categorie = :categorie, date_envoi = :date_envoi WHERE id = :id";
-    $stmt = $connexion->prepare($query);
-    $stmt->execute([
-        ':id' => $id,
-        ':titre' => $titre,
-        ':description' => $description,
-        ':categorie' => $categorie,
-        ':date_envoi' => $date_envoi
-    ]);
-
-    // Rediriger l'utilisateur vers une page de confirmation ou une autre page après la modification
-    header('Location: index.php');
-    exit;
-}*/
 ?>
 
 

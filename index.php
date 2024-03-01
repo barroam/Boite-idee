@@ -32,8 +32,9 @@ if($result)
         ?>
         
         <div class="block">
-    <h2 class="titre"> <?= $row['titre'] ;?></h2>
-    <h3 class="categorie"><?= $row['caegorie'] ;?></h3>
+        <h3 class="idee"> Idee N°<?= $row['id'] ;?></h3>      
+    <h2 class="titre">Titre: <?= $row['titre'] ;?></h2>
+    <h3 class="categorie">Catégorie:<?= $row['categorie'] ;?></h3>
     <p class="description"><?= $row['descript'] ;?></p>
     <h4 class="date_envoi"><?= $row['date_envoi'] ;?></h4>
     <div class="modifie_supprimer">

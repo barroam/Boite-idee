@@ -39,15 +39,15 @@ $result = $query_run->fetchAll(PDO::FETCH_ASSOC);//executer la raquette par asso
                     </div>
                     <div class="ajout">
                     <label for="description">description</label>
-                <textarea type="text" name="descript"  value=""   id="10" cols="50" rows="20"><?= $result [0]["descript"];?></textarea>
+                    <textarea type="text" name="descript"  value=""   id="10" cols="50" rows="20"><?= $result [0]["descript"];?></textarea>
                     </div>
                     <div class="ajout">
                     
                     </div>
-                    <div class="ajout">
+                    <!-- <div class="ajout">
                     <label for="date_envoi">date d'envoi</label>
                     <input type="DateTime-local" name="date_envoi" >
-                    </div>
+                    </div> -->
                     <div class="ajout">
                         <button type="submit" name="save_modifie">S'inscrire</button>
                         </div>

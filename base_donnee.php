@@ -130,43 +130,92 @@ if ($query_execute) {
 //la modification des données de l'idée
 
   if (isset($_POST['save_modifie'])) {
- 
-  $id = validate($_POST['id']);
-   $titre  = validate($_POST['titre']);
-   $descript = validate($_POST['descript']);
-   $date_envoi = validate($_POST['date_envoi']);
-    try {
+    // extract($_POST);
+    // Valider et nettoyer les données
+    $id = intval($_POST['id']);
+    $titre = htmlspecialchars($_POST['titre']);
+    $descript = htmlspecialchars($_POST['descript']);
+    // $id_utilisateur = intval($_POST['id_utilisateur']);
+    // $id_categorie = intval($_POST['id_categorie']);
+
+    // Mise à jour avec une requête préparée
+    $query = "UPDATE Idee SET titre = ?, descript = ? WHERE id = ?";
+    $stmt = $connexion->prepare($query);
+
+    // Exécution de la requête avec gestion des erreurs
+    if ($stmt->execute([$titre, $descript, $id])) {
+        // Redirection en cas de succès
+        $_SESSION['message'] = "Modification reussi";
+        header('Location: index.php');
+        exit();
+    } else {
+        // Gestion de l'erreur en cas d'échec
+        echo "Erreur lors de la mise à jour de l'idée.";
+    }
+}
+?>
+
+<?php
+//   $id = validate($_POST['id']);
+//    $titre  = validate($_POST['titre']);
+//    $descript = validate($_POST['descript']);
+//    $date_envoi = validate($_POST['date_envoi']);
+//     try {
         
-        $query = "UPDATE Idee SET titre=:titre,descript=:descript,date_envoi=:date_envoi WHERE id=:id_user LIMIT 1";
-        $query_run =$connexion->prepare($query);
+//         $query = "UPDATE Idee SET titre=:titre,descript=:descript,date_envoi=:date_envoi WHERE id=:id LIMIT 1";
+//         $query_run =$connexion->prepare($query);
 
-        $data= [
-            ':titre' => $titre ,
-            ':descript' => $descript,
-            ':date_envoi' => $date_envoi,
-            ':id' => $id   
-        ];
+//         $data= [
+//             ':titre' => $titre ,
+//             ':descript' => $descript,
+//             ':date_envoi' => $date_envoi,
+//             ':id' => $id   
+//         ];
        
-        $query_execute = $query_run->execute($data);
-        var_dump($query_execute);
-        die();
-        if ($query_execute) {
-            $_SESSION['message'] = "Modification reussi";
-            header('Location:index.php');
-            exit(0);
-        } else {
-            $_SESSION['message'] = "Modification incorrect";
-            header('Location:index.php');
-            exit(0);
-        }
+//         $query_execute = $query_run->execute($data);
+//         var_dump($query_execute);
+//         die();
+//         if ($query_execute) {
+//             $_SESSION['message'] = "Modification reussi";
+//             header('Location:index.php');
+//             exit(0);
+//         } else {
+//             $_SESSION['message'] = "Modification incorrect";
+//             header('Location:index.php');
+//             exit(0);
+//         }
 
-    } catch (PDOException $e) {
-        echo $e->getMessage();
+//     } catch (PDOException $e) {
+//         echo $e->getMessage();
+//     }
+//   
+
+  /**/
+
+
+  // la partie suppression 
+  if (isset($_POST['supprimer_idee'])) {
+    $id_user_delete = $_POST['supprimer_idee'];
+    $id_user = $_POST['id'];
+    try {
+       $query="DELETE FROM Idee WHERE id=:id_user";
+       $query_run = $connexion->prepare($query);
+       $data = [':id_user' =>$id_user_delete ];
+       $query_run->execute($data);
+
+       if ($query_run) {
+        $_SESSION['message'] = "Suppression reussi reussi";
+        header('Location:index.php');
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Suppression incorrect";
+        header('Location:index.php');
+        exit(0);
     }
 
-
-
-
+    } catch (PDOException $e) {
+        echo $e->getMessage() ;
+    }
   }
 ?>
 

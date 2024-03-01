@@ -39,7 +39,10 @@ if($result)
     <h4 class="date_envoi"><?= $row['date_envoi'] ;?></h4>
     <div class="modifie_supprimer">
     <div><a href="modifie_idee.php?id=<?= $row['id'] ;?>" class="btn_modifier_idee ">Modifier </a> </div>
-    <div><a href="ajout_idee.php" class="btn_supprimer_idee ">Supprimer</a> </div> </div>
+    <form action="base_donnee.php" method="POST">
+    <button type="submit" name="supprimer_idee" value="<?= $row['id'] ;?>" class="btn_supprimer_idee" >Supprimer </button>
+    </form>
+    </div>
 </div>
 
 

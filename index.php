@@ -1,5 +1,5 @@
 
-<?php session_start();
+<?php //session_start();
  include('base_donnee.php')?>
  <?php require('header.php'); ?>
 <!DOCTYPE html>

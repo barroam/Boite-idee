@@ -1,6 +1,6 @@
-<?php session_start() ?>
 
 
+<?php  session_start(); ?>
 <?php
 $serveur = "localhost" ;
 $utilisateur = "root";
@@ -16,10 +16,8 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion:".$e->getMessage());
 }
-
-
-
-
+?>
+<?php
 if (isset($_POST['save_inscription'])) {
     //
     function validate($verifie){
@@ -38,6 +36,20 @@ if (isset($_POST['save_inscription'])) {
    $telephone    = validate($_POST['telephone']); 
 
 
+   //récupération des données d'inscription pour le mettre dans le session
+   
+
+  $_SESSION['nom_complet'] = $nom_complet ;
+  $_SESSION['email'] = $email ;
+  $_SESSION['mot_de_passe'] = $mot_de_passe ;
+  $_SESSION['profession'] = $profession;
+  $_SESSION['fonction'] = $fonction ;
+  $_SESSION['telephone'] = $telephone;
+
+var_dump($_SESSION['mot_de_passe']);
+die();
+
+  // condition de verification
    if (empty($nom_complet)) {
     header("Location:inscription.php?error= votre nom complet est incorrect ");
     exit();
@@ -76,6 +88,11 @@ if ($query_execute) {
     exit(0);
 }
 }
+
+
+
+?>
+<?php
 
 //Récuperer les données ajouter de l'idée 
 
@@ -125,7 +142,8 @@ if ($query_execute) {
 }
     }
 
-
+    ?>
+    <?php
 
 //la modification des données de l'idée
 

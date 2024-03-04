@@ -1,5 +1,5 @@
 
-<?php session_start() ?>
+<?php // session_start() ?>
 <?php require('header.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -48,7 +48,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             color: #fff;
-            background-image: url(img/Designer\ \(5\).jpeg);
+             background-image: url(img/Designer\ \(5\).jpeg);
             background-size:  cover;
             background-position: center; 
             background-repeat: no-repeat;

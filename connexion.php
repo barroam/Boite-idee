@@ -1,5 +1,47 @@
 <?php require('header.php'); ?>
 
+<?php /*
+// liink du base de donnée pour la page
+require('base_donnee.php'); */?>
+
+<?php
+// la partie connexion pour vérifier la connexion et le mettre connecter
+if (isset($_POST['save_connexion']) || !empty($_POST['save_connexion'])){
+    function validate($verifie){
+        $verifie = trim($verifie);
+        $verifie = stripcslashes($verifie);
+        $verifie = htmlspecialchars($verifie);
+        return $verifie;}
+    $email        = validate($_POST['email']);
+    $mot_de_passe = sha1($_POST['mot_de_passe']);
+
+    
+
+    $query = 'SELECT * FROM Users WHERE email = ? AND mot_de_passe = ?';
+    $query_run = $connexion->prepare($query);
+    $data =[
+        'email' => $email,
+        'mot_de_passe' => $mot_de_passe
+    ];
+  $query_run->execute($data);
+   if ($query_run->rowCount() > 0) {
+    $_SESSION['mot_de_passe'] = $mot_de_passe ;
+    $_SESSION['email'] = $email ;
+    $_SESSION['id'] = $query_run->fetch()['id'];
+
+   }else {
+    echo " Erreur ";
+   }
+}
+else{
+    echo"Veuillez compléter les champs";
+   
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,11 +58,12 @@
             <input type="email" name="email" placeholder="Adresse email" required><br>
             <input type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
             <button type="submit">Se connecter</button>
-            <a href="inscription.php">S'inscrire</a>
+            <a href="" name="save_connexion" >S'inscrire</a>
         </form>
     </div>
 </body>
 <style>
+
 body{
             font-family: Arial, sans-serif;
             background-color: #000;

@@ -8,14 +8,14 @@
 </head>
 <body>
 <body>
-<header>
+<div class="cont_message">
         <h1>Bienvenue dans notre Boîte à idées !</h1>
        
         <p>Nous sommes ravis de vous accueillir dans notre communauté <br>
             dédiée à l'innovation et à l'échange d'idées. Chez nous, <br>
             chaque voix compte, chaque idée est précieuse et chaque 
             contribution est valorisée.</p>
-    </header>
+</div>
    <div class="container_idee">
     <section class="box_idee texte_idee">
         <h1>Le Pourquoi</h1>
@@ -96,7 +96,7 @@ le navbarr -->
   color: #fff;
   }
 
-  header {
+  .cont_message {
     background-color:#072247;
     color: white;
     text-align: center;
@@ -113,13 +113,13 @@ le navbarr -->
    margin-top: 3rem;
 
 }
-header:hover{
+.cont_message:hover{
 
     background-color: #333;
     color: #fff;
 }
 
-header p {
+.cont_message p {
     
     font-size: 18px;
 }

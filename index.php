@@ -10,17 +10,23 @@
     <title>Document</title>
 </head>
 <body>
- 
-
-<div class="ajout"><a href="ajout_idee.php" class="btn_ajout_idee ">Ajouter des idées</a> </div>
-<!--Voici le Bouton qui te permettre d'ajouter-->
-   <!--affiche le message si l'inscription est reussi ou pas  -->
+<a href="ajout_idee.php" class="btn_ajout_idee "> Ajout idée <i class="fa-solid fa-lightbulb taille " style="color: #FFD43B; "></i></a>
+       <!--affiche le message si l'inscription est reussi ou pas  -->
+   
    <?php if (isset($_SESSION['message'])) : ?>
                     <h1><?= $_SESSION['message']; ?></h1>
                 <?php 
             unset($_SESSION['message']);
             endif; ?>
+ <div class="cont_all">
+    
+ 
+
+
+<!--Voici le Bouton qui te permettre d'ajouter-->
+
 <div class="cont">
+   
 <?php 
 $query = "SELECT * FROM Idee ";
 $query_run = $connexion->prepare($query);
@@ -39,9 +45,9 @@ if($result)
     <p class="description"><?= $row['descript'] ;?></p>
     <h4 class="date_envoi"><?= $row['date_envoi'] ;?></h4>
     <div class="modifie_supprimer">
-    <div><a href="modifie_idee.php?id=<?= $row['id'] ;?>" class="btn_modifier_idee ">Modifier </a> </div>
+    <a href="modifie_idee.php?id=<?= $row['id'] ;?>" class="btn_modifier_idee "><i class="fa-solid fa-square-pen taille" style="color: #FFD43B;">Modifier </i> </a> 
     <form action="base_donnee.php" method="POST">
-    <button type="submit" name="supprimer_idee" value="<?= $row['id'] ;?>" class="btn_supprimer_idee" >Supprimer </button>
+    <button type="submit" name="supprimer_idee" value="<?= $row['id'] ;?>" class="btn_supprimer_idee" > <i class="fa-solid fa-trash taille" style="color: #FFD43B;"></i> </button>
     </form>
     </div>
 </div>
@@ -71,82 +77,79 @@ else {
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 </body>
 <style>
-    .ajout{
+    
+    .cont_all{
         display: flex;
-        justify-content: flex-end;
+        margin: 5%;
     }
+  
     .btn_ajout_idee{
         list-style: none;
         text-decoration: none;
         width: auto;
        padding: 1rem;
-       margin:  1% ;
-        background-color: blue;
+       margin:  2% ;
         border-radius: 5% ;
         cursor: pointer;
+        color: #fff;
+        background-color: #000;
+        text-align: center;
+        float: right;
+        margin-right: 5%;
     }
     .modifie_supprimer{
         display: flex;
         justify-content:flex-end ;
         gap: 2%;
         margin: 3%;
-align-items: flex-end;
+            align-items: center;
 
     }
+
     .btn_modifier_idee{
         list-style: none;
         text-decoration: none;
         width: auto;
-       padding: 1rem;
+      
        margin:  1% ;
-        background-color: blue;
+       
         border-radius: 2% ;
         cursor: pointer;
+        align-items: center;
     }
 .btn_supprimer_idee{
     list-style: none;
         text-decoration: none;
         width: auto;
-       padding: 1rem;
+       
        margin:  1% ;
-        background-color: blue;
+       
         border-radius: 2% ;
         cursor: pointer;
-       
+        border: none;
+        background-color: none;
+        align-items: center;
+       background-color: #fff;
 }
     .cont{
         display: flex;
         flex-wrap: wrap;
-      
-        
+      margin: 2%;
+      gap: 1.5%;
     }
     .block{
         margin: 1%;
         padding: 1%;
     align-items: center;
-        width: 25%;
+        width: 28%;
         min-height:17em; ;
-        background-color:#8080ff ;
+        background-color:#fff ;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 1rem solid  #ccc;
 
     }
   

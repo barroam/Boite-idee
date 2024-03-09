@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h3>insert des données dans la base de données</h3>
+<h class="text_header">insert des données dans la base de données</h3>
 <a href="index.php" class="btn_retour end">Retour</a>
 <div class="container">
                <form action="base_donnee.php" method="POST">
@@ -27,13 +27,8 @@
 <style>
       body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-image: url(img/téléchargement.png);
-            background-size:  cover;
-            background-position: center; 
-            background-repeat: no-repeat;
         }
     .container{
         display: flex;
@@ -61,7 +56,6 @@
         font-size: 1.5rem;
         text-align: center;
         font-weight: 900;
-
     }
     .mb-3{
         display:flex ;
@@ -79,7 +73,6 @@
        margin: 2%;
         background-color: red;
         border-radius: 5% ;
-       
         width: 4%; 
        
     }

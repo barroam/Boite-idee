@@ -26,7 +26,6 @@
 <!--Voici le Bouton qui te permettre d'ajouter-->
 
 <div class="cont">
-   
 <?php 
 $query = "SELECT * FROM Idee ";
 $query_run = $connexion->prepare($query);
@@ -36,8 +35,7 @@ $result = $query_run->fetchAll(PDO::FETCH_ASSOC);
 if($result)
 {
     foreach ($result as $row) {
-        ?>
-        
+        ?> 
         <div class="block">
         <h3 class="idee"> Idee N°<?= $row['id'] ;?></h3>      
     <h2 class="titre">Titre: <?= $row['titre'] ;?></h2>
@@ -45,14 +43,14 @@ if($result)
     <p class="description"><?= $row['descript'] ;?></p>
     <h4 class="date_envoi"><?= $row['date_envoi'] ;?></h4>
     <div class="modifie_supprimer">
-    <a href="modifie_idee.php?id=<?= $row['id'] ;?>" class="btn_modifier_idee "><i class="fa-solid fa-square-pen taille" style="color: #FFD43B;">Modifier </i> </a> 
+    <a href="modifie_idee.php?id=<?= $row['id'] ;?>" class="btn_modifier_idee ">
+    <i class="fa-solid fa-square-pen taille" style="color: #FFD43B;">Modifier </i> </a> 
     <form action="base_donnee.php" method="POST">
-    <button type="submit" name="supprimer_idee" value="<?= $row['id'] ;?>" class="btn_supprimer_idee" > <i class="fa-solid fa-trash taille" style="color: #FFD43B;"></i> </button>
+    <button type="submit" name="supprimer_idee" value="<?= $row['id'] ;?>" class="btn_supprimer_idee" > 
+    <i class="fa-solid fa-trash taille" style="color: #FFD43B;"></i> </button>
     </form>
     </div>
 </div>
-
-
         <?php
     }
 }
@@ -68,11 +66,6 @@ else {
 
 <?php
 }
-
-
-
-
-
 ?> 
 </div>
 
@@ -86,7 +79,6 @@ else {
         display: flex;
         margin: 5%;
     }
-  
     .btn_ajout_idee{
         list-style: none;
         text-decoration: none;
@@ -107,16 +99,12 @@ else {
         gap: 2%;
         margin: 3%;
             align-items: center;
-
     }
-
     .btn_modifier_idee{
         list-style: none;
         text-decoration: none;
         width: auto;
-      
        margin:  1% ;
-       
         border-radius: 2% ;
         cursor: pointer;
         align-items: center;
@@ -150,8 +138,8 @@ else {
         background-color:#fff ;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 1rem solid  #ccc;
-
     }
   
 </style>
 </html>
+<?php require('footer.php'); ?>

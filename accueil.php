@@ -38,40 +38,38 @@
 
 
     <main>
-        <section class="box" id="ai">
+        <section class="box glass" id="ai">
             <h2>Inclusivité et diversité </h2>
             <p>Une boîte à idées est un forum ouvert à tous, indépendamment du niveau d'expérience,
                  du titre professionnel ou du domaine d'expertise. Elle encourage la participation 
                  de personnes provenant de différents horizons, favorisant ainsi la diversité des 
                  perspectives. Cette diversité est essentielle pour stimuler la créativité et générer des idées novatrices.</p>
         </section>
-        <section class="box" id="iot">
+        <section class="box glass" id="iot">
             <h2>Facilitation de la communication</h2>
             <p>Une boîte à idées facilite la communication entre les membres de l'organisation en fournissant un canal dédié pour échanger des idées. Elle encourage les discussions constructives et permet aux participants de clarifier leurs idées, de poser des questions et de recevoir des commentaires
                 , ce qui peut conduire à des solutions plus robustes et innovantes.</p>
         </section>
-        <section class="box" id="vr">
+        <section class="box glass" id="vr">
             <h2>Encouragement de la participation</h2>
             <p>L'objectif principal d'une boîte à idées est de promouvoir la participation active de chacun. Elle crée un environnement où les individus se sentent encouragés et en sécurité pour partager leurs idées, même les plus audacieuses ou les plus expérimentales. Cela favorise un climat de confiance et de collaboration au sein de l'organisation</p>
         </section>
-        <section class="box" id="robotics">
+        <section class="box glass" id="robotics">
             <h2>Centralisation et organisation des idées</h2>
             <p>Découvrez les dernières avancées en matière de robotique et comment les robots peuvent améliorer notre quotidien.</p>
         </section>
-        <section class="box" id="robotics">
+        <section class="box glass" id="robotics">
             <h2>Stimulation de l'innovation </h2>
             <p>Elle offre un moyen efficace de centraliser et d'organiser les idées. Les contributions sont enregistrées de manière systématique et peuvent être triées, catégorisées et évaluées en fonction de leur pertinence et de leur faisabilité. Cela permet de préserver les idées pour une utilisation future et de garantir qu'aucune suggestion ne soit perdue ou oubliée.
 
 </p>
         </section>
-        <section class="box" id="robotics">
+        <section class="box glass" id="robotics">
             <h2>Culture de l'apprentissage continu</h2>
             <p>Une boîte à idées favorise une culture de l'apprentissage continu en encourageant les individus à partager leurs connaissances, leurs expériences et leurs idées. Elle reconnaît que l'innovation est un processus itératif qui nécessite une réflexion constante et une volonté d'apprendre et de s'améliorer en permanence.</p>
         </section>
     </main>
-    <footer>
-        <p>Contactez-nous pour partager vos idées innovantes : contact@example.com</p>
-    </footer>
+  
 
  <!-- 
   <header>
@@ -92,7 +90,7 @@ le navbarr -->
     margin: 00;
   padding: 00;
   box-sizing: border-box;
-  background-color:#072247;
+ 
   color: #fff;
   }
 
@@ -134,16 +132,16 @@ le navbarr -->
 .texte_idee{
     font-size: 1.3rem;
     padding: 5%;
-    background-color: #fff;
+ 
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
     margin: 0 auto;
     color: black;
     align-items: center;
     width: 70%;
 }
 .texte_idee:hover{
-    background-color: #72520B;
+    background-color: gray;
     color: #fff;
 }
 main {
@@ -157,11 +155,12 @@ main {
     background-color: #000;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    padding: 20px;
-    width: 300px;
+    margin: 1.8rem;
+    padding: 1.3rem;
+    width: 17rem;
     color: #72520B;
 }
+
 
 .box h2 {
     color: #fff;
@@ -171,16 +170,12 @@ main {
 .box p {
     color: #fff;
     font-size: 16px;
+
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
 
 
 /* background-color: #D1F5E9;*/
 </style>
 </html>
+<?php require('footer.php'); ?>

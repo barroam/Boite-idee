@@ -7,8 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-
-<h class="text_header">insert des données dans la base de données</h3>
+<h1 class="titre">Ajouter </h1>
 <a href="index.php" class="btn_retour end">Retour</a>
 <div class="container">
                <form action="base_donnee.php" method="POST">
@@ -20,11 +19,14 @@
                     <input class="ajout" type='text' name="categorie" >
                     <label for="date_envoi">date d'envoi</label>
                     <input class="ajout" type="DateTime-local" name="date_envoi" >
-                    <button class="ajout" type="submit" name="save_ajout">S'inscrire</button>
+                    <button class="ajout_b" type="submit" name="save_ajout">S'inscrire</button>
                </form>
     </div>
 </body>
 <style>
+    .titre{
+        text-align: center;
+    }
       body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -35,11 +37,12 @@
         justify-content: center;
         text-align: center;
         max-width: 50%;
-            margin: 100px auto;
+            margin: 4% auto;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             color: #fff;
+            background-color: black;
     }
     .ajout{
         width: 95%;
@@ -48,8 +51,19 @@
             border: 1px solid #ccc;
             border-radius: 4px;
     }
+    .ajout_b{
+        width: 98%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;    
+    }
+    .ajout_b:hover{
+        background-color: #E6E6E6;
+    }
+
     .titre_label{
-        color: black;
+        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -65,17 +79,21 @@
     }
 
     .btn_retour{
-        display: flex;
-       justify-content: center;
-       align-items: flex-end;
+        list-style: none;
         text-decoration: none;
+        width: auto;
        padding: 1rem;
-       margin: 2%;
-        background-color: red;
+       margin:  2% ;
         border-radius: 5% ;
-        width: 4%; 
-       
+        cursor: pointer;
+        color: #fff;
+        background-color: #000;
+        text-align: center;
+        float: right;
+        margin-right: 5%;
     }
+    
    
 </style>
 </html>
+<?php require('footer.php'); ?>

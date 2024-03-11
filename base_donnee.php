@@ -17,6 +17,7 @@ try {
     die("Erreur de connexion:".$e->getMessage());
 }
 ?>
+
 <?php
 if (isset($_POST['save_inscription'])) {
     //
@@ -25,30 +26,22 @@ if (isset($_POST['save_inscription'])) {
         $verifie = stripcslashes($verifie);
         $verifie = htmlspecialchars($verifie);
         return $verifie;}
-    
     //Récuperer le donner d'inscription
-  
    $nom_complet  = validate($_POST['nom_complet']);
    $email        = validate($_POST['email']);
    $mot_de_passe = validate(password_hash($_POST['mot_de_passe'],PASSWORD_DEFAULT));    
    $profession   = validate($_POST['profession']);  
    $fonction     = validate($_POST['fonction']);
    $telephone    = validate($_POST['telephone']); 
-
-
    //récupération des données d'inscription pour le mettre dans le session
-   
-
   $_SESSION['nom_complet'] = $nom_complet ;
   $_SESSION['email'] = $email ;
   $_SESSION['mot_de_passe'] = $mot_de_passe ;
   $_SESSION['profession'] = $profession;
   $_SESSION['fonction'] = $fonction ;
   $_SESSION['telephone'] = $telephone;
-
 var_dump($_SESSION['mot_de_passe']);
 die();
-
   // condition de verification
    if (empty($nom_complet)) {
     header("Location:inscription.php?error= votre nom complet est incorrect ");
@@ -88,49 +81,34 @@ if ($query_execute) {
     exit(0);
 }
 }
-
-
-
 ?>
+
+
 <?php
-
-//Récuperer les données ajouter de l'idée 
-
-
+//Récuperer les données ajouter de l'idée
 if (isset($_POST['save_ajout'])) {
-    //
-    
     function validate($verifie){
         $verifie = trim($verifie);
         $verifie = stripcslashes($verifie);
         $verifie = htmlspecialchars($verifie);
         return $verifie;}
-    
     //Récuperer le donner d'inscription
-  
    $titre  = validate($_POST['titre']);
    $descript = validate($_POST['descript']);
    $categorie = validate($_POST['categorie']);
    $date_envoi = validate($_POST['date_envoi']);
-   
-//    var_dump($titre,$descript,$categorie,$date_envoi);
-//    die('ajout idee');
-
-   $query = "INSERT INTO Idee (titre,descript,categorie,id_user,date_envoi) VALUES ( :titre, :descript, :categorie, :id_user, :date_envoi)";
+   //les requetes sql
+   $query = "INSERT INTO Idee (titre,descript,categorie,id_user,date_envoi)
+    VALUES ( :titre, :descript, :categorie, :id_user, :date_envoi)";
   $query_run = $connexion->prepare($query);
-
   $data = [
   ':titre'=> $titre, 
   ':descript' => $descript, 
   ':categorie' => $categorie,
   ':date_envoi' => $date_envoi,
   ':id_user' => 1
-  
   ];
-
 $query_execute = $query_run->execute($data);
-
-
 if ($query_execute) {
     $_SESSION['message'] = "Inscription reussi";
     header('Location:index.php');
@@ -141,12 +119,10 @@ if ($query_execute) {
     exit(0);
 }
     }
-
     ?>
+
     <?php
-
 //la modification des données de l'idée
-
   if (isset($_POST['save_modifie'])) {
     // extract($_POST);
     // Valider et nettoyer les données
@@ -173,7 +149,11 @@ if ($query_execute) {
 }
 ?>
 
+
+
+
 <?php
+  // /*une autre methode plus  simple*/
 //   $id = validate($_POST['id']);
 //    $titre  = validate($_POST['titre']);
 //    $descript = validate($_POST['descript']);
@@ -207,8 +187,8 @@ if ($query_execute) {
 //         echo $e->getMessage();
 //     }
 //   
-
-  /**/
+  
+  
 
 
   // la partie suppression 
